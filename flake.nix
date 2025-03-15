@@ -1,5 +1,5 @@
 {
-  description = "Joiner Manager Bridge Development Environment";
+  description = "Joiner Bridge - A Matrix bridge written in Go";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -10,24 +10,16 @@
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
-        python = pkgs.python3;
-        pythonPackages = python.pkgs;
       in
       {
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
-            # Python environment
-            (python.withPackages (ps: with ps; [
-              # Core dependencies
-              ps.mautrix
-              ps.psycopg2  # For PostgreSQL support
-              
-              # Development tools
-              ps.black
-              ps.pylint
-              ps.mypy
-              ps.pytest
-            ]))
+            # Go environment
+            go
+            gopls
+            go-tools
+            golangci-lint
+            delve  # Go debugger
 
             # Database
             postgresql
@@ -37,9 +29,12 @@
           ];
 
           shellHook = ''
-            echo "Joiner Manager Bridge Development Environment"
-            echo "Python: ${python.version}"
+            echo "Joiner Bridge Development Environment"
+            echo "Go: $(go version)"
           '';
+
+          # Set GOPATH to allow package installation
+          GOPATH = "${pkgs.go}/share/go";
         };
       }
     );
