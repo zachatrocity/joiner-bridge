@@ -1,0 +1,10 @@
+id: joiner
+url: http://localhost:29323
+as_token: "This will be generated when running the bridge"
+hs_token: "This will be generated when running the bridge"
+sender_localpart: joinerbot
+rate_limited: false
+namespaces:
+  users: []
+  aliases: []
+  rooms: []

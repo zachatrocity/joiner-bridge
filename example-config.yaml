@@ -1,0 +1,36 @@
+homeserver:
+  address: https://matrix.org
+  domain: matrix.org
+  async_media: false
+
+appservice:
+  address: http://localhost:29323
+  hostname: 0.0.0.0
+  port: 29323
+  database:
+    type: sqlite3
+    uri: joiner.db
+  id: joiner
+  bot:
+    username: joinerbot
+    displayname: Room Joiner Bot
+    avatar: ""
+
+logging:
+  directory: ./logs
+  file_name_format: "{{.Date}}-{{.Index}}.log"
+  file_date_format: "2006-01-02"
+  file_mode: 0600
+  timestamp_format: "Jan _2, 2006 15:04:05"
+  print_level: debug
+
+bridge:
+  command_prefix: "!joiner"
+  management_room_text:
+    welcome: "Welcome to the Room Joiner Bridge management room"
+    welcome_connected: "The bridge has been started successfully."
+    welcome_unconnected: "The bridge has been started, but you need to log in."
+  encryption:
+    allow: false
+    default: false
+    require: false
