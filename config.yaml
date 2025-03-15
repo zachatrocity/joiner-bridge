@@ -1,0 +1,16 @@
+# config.yaml
+homeserver:
+    address: https://matrix.beeper.com
+    domain: beeper.com
+
+appservice:
+    database: postgresql://user:pass@localhost/joinermanager
+    hostname: 0.0.0.0
+    port: 29334
+    max_retries: 5
+
+bridge:
+    permissions:
+        "@yourusername:beeper.com": admin
+
+command_prefix: "!jm"
