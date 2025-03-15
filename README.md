@@ -29,7 +29,3 @@ A simple Matrix bridge that joins rooms.
 ```bash
 go build ./cmd/joiner-bridge
 ```
-
-## License
-
-MIT License
